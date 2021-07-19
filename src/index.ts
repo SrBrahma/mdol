@@ -4,21 +4,12 @@
 import { readFile, writeFile } from 'fs-extra';
 // import escapeStringRegexp from 'escape-string-regexp';
 import path from 'path';
-import { sign, tagCloserStart, tagEnd, tagOpenerStart, warnTextDefault } from './consts';
 
 // TODO? check installed mdol version in the package. When running `npx mdol`, it shall check the major/minor version...
 // ^ that would probably be a hell. Maybe only check for major if really change something that would break the readme, but inform
 // that an older version is being used and it should be updated.
 
 // TODO in `mdol clean`, add an option to remove all the tags and inside tags comments
-
-
-
-
-
-
-
-
 
 
 // Have your typedoc on watch, and have a ts-node-dev including the docs and README.hbs to run this.
@@ -38,5 +29,6 @@ async function run() {
 }
 
 
+void run().catch(err => {
 
-void run();
+});

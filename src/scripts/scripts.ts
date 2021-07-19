@@ -1,5 +1,5 @@
 import path from 'path';
-import { srcPath } from '../consts';
+import { srcPath } from '../main/consts';
 
 /** The loaded scripts. */
 const scripts: Record<string, any> = {};

@@ -2,6 +2,7 @@ import fse from 'fs-extra';
 import { z } from 'zod';
 import path from 'path';
 
+// TODO: add 'vscode extension' badge
 
 const validBadges = ['npmWD'];
 // Add comment link to the available badges guide / badges script guide.

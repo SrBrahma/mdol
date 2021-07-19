@@ -43,6 +43,12 @@ Simple and easy way to populate Markdowns automatically, like README.md file. Ha
 
 Spaces around are allowed: `<!--$ yourProp -->`
 
+### Prop/Segment
+#### Function
+* The arguments are parsed as JSON5.
+* `undefined` value is not supported, but `null` is.
+* They may either return a string or an object, so nested access with function returns is supported.
+
 **When closing, `/` before the `$`!!** It's more noticeable that way.
 
 ```

@@ -9,6 +9,8 @@ async function parseFile(fileContent: string, { dict }: {dict: Dict}): Promise<s
   let result = fileContent.trim();
   const allProps = getAllProps(fileContent);
   for (const prop of allProps) {
+    // TODO: try-catch this, and on catch include the filename and the line of the error, in the file, in
+    // its original state.
     const content = await parseProp(prop, { dict });
     result = populateTags(result, prop, content);
   }
