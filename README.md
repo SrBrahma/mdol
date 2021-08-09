@@ -20,7 +20,7 @@ Simple and easy way to populate Markdowns automatically, like README.md file. Ha
 * I kept editing by mistake my README.md instead of the README.hbs.
 * I wanted some nice warns/reminders on the README.md if that part was code-generated.
 * I don't like documentating at all, so I wanted a more plug and play solution, without having to learn too much new stuff about it.
-* `{{}}`, as Handlebars/Mustache uses, is annoying for React project docs.
+* `{{}}`, as Handlebars/Mustache uses, is annoying for React projects.
 * Integration with `typedoc` and `typedoc-plugin-markdown`.
 * Contributors had to deal with the .hbs to change the README. Not newbie friendly at all.
 * Inform the contributor where the data is being generated, where it can be changed.
@@ -74,6 +74,13 @@ Spaces around are allowed: `<!--$ yourProp -->`
 <!--$ @typedoc-md.interface -->
 TODO `npx mdol clean` - Clear all tags content.
 
+### Tag Type
+#### None: dict: entries entered on the **.mdol.js** file.
+#### **@** - script: Like dict, but for common usage.
+#### **!** - meta: Information that **mdol** has entered about it on the Markdown file.
+* !warn - Informs the human editor that him should not edit this file, but edit the source where the info was adquired. It's included between generated lines.
+* !info - Header and footer informing the human editor about the **mdol** package.
+* !buildInfo - Added after the header with some informations, like **mdol** version and when the last compilation of the Markdown file happened, in UTC format.
 
 <br/>
 
@@ -95,9 +102,6 @@ Markdown, md. $, dolar. *mdolar?* **mdol!**
 ## Future
 * Add guide for people who are contributing to some README.md.
 Link this guide on the README signs.
-* In this guide or near, have the scripts descriptions.
-* `#` tags, for mdol meta/commands usage. Ex:
-  * #buildInfo {updatedAt: utcDate, mdolVersion: 'x.x.x', ...}
-  * #info, for general comments
+* In this guide or near it, have the scripts descriptions.
+* Commands, with # prefix:
   * #for (maybe not needed)
-* Maybe, for above, mdol placed tags could have another char, like &.

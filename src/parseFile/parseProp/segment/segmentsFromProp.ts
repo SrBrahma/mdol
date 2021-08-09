@@ -1,10 +1,10 @@
 // TODO add chalk
 
-import { Args, parseArgs } from './parseArgs';
+import { Args, parseArgs } from './parseArgs/parseArgs';
 
-const validFirstChars = '[@a-zA-Z]';
+const validFirstChars = '[@a-zA-Z_]';
 /** Doesn't include '.', as it isn't part of the segment. */
-const validFollowingChars = '[a-zA-Z0-9]';
+const validFollowingChars = '[a-zA-Z0-9_]';
 
 const debug = false;
 
@@ -60,7 +60,6 @@ export function segmentsFromProp(prop: string): SegmentsWithArgs {
     const isFirstSegmentChar = !newSegmentName.length;
 
     if (newFunctionArgs === undefined) {
-      console.log(2, char);
       if (char === '.') {
         end(); // In end will be checked for segment emptyness.
       } else if (char === '(') {
@@ -79,7 +78,6 @@ export function segmentsFromProp(prop: string): SegmentsWithArgs {
         newSegmentName += char;
       }
     } else { // Else, is function call.
-      console.log(4, parenthesisDelta, char);
       if (char === '(') {
         parenthesisDelta++;
       } else if (char === ')') {

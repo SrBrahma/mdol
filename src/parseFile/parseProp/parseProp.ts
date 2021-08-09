@@ -1,14 +1,15 @@
-import { getScript } from '../scripts/scripts';
-import { segmentsFromProp, SegmentWithArgs } from './segmentsFromProp';
+import { getScript } from '../../scripts/scripts';
+import { segmentsFromProp, SegmentWithArgs } from './segment/segmentsFromProp';
 import JSON5 from 'json5';
+import { Dict } from '../../main/types';
 
 
 /** Returns the corresponding content for the given prop. */
 export async function parseProp(prop: string, { dict }: {dict: Dict}): Promise<string> {
 
-
   // May throw error.
   const segments = segmentsFromProp(prop);
+
   // Could just keep increasing until . is found, or if ( is found, kee)
 
   let currentValue: any;
@@ -22,7 +23,7 @@ export async function parseProp(prop: string, { dict }: {dict: Dict}): Promise<s
       // If is a plugin
       if (segmentName[0] === '@') {
         const scriptName = segmentName.substr(1);
-        currentValue = getScript(scriptName);
+        currentValue = await getScript(scriptName);
       } else { // Else is a dict
         currentValue = dict[segmentName];
       }
@@ -32,6 +33,9 @@ export async function parseProp(prop: string, { dict }: {dict: Dict}): Promise<s
       currentValue = currentValue[segmentName];
     }
 
+    if (currentValue === undefined)
+      throw new Error(`Prop segment value does not exist or is undefined! segment='${segmentName}', prop='${prop}'`);
+
     // For all segments:
     if (segmentArg !== undefined && typeof currentValue !== 'function')
       throw new Error(`Tried to call a non function! prop='${prop}'`);
@@ -40,7 +44,7 @@ export async function parseProp(prop: string, { dict }: {dict: Dict}): Promise<s
     // a more advanced and dynamic access, and backward compability, if prop turned to be a function.
     if (typeof currentValue === 'function') {
       // Function(`return currentValue${functionPart}`); would be somewhat a security concern, so I created parseArgs and segmentFromProp
-      currentValue = currentValue(...segmentArg ?? []);
+      currentValue = await currentValue(...segmentArg ?? []);
     }
 
     previousSegment = segment;

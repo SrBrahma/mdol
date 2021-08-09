@@ -1,13 +1,13 @@
 module.exports = {
   preset: 'ts-jest',
   testEnvironment: 'node',
+  maxWorkers: '50%',
   globals: {
     'ts-jest': {
       isolatedModules: true,
-      maxWorkers: '50%'
     }
   },
-  transform: {
-    "^.+\\.tsx?$": "esbuild-jest"
-  }
+  // transform: {
+  //   "^.+\\.tsx?$": "esbuild-jest"
+  // }
 };
