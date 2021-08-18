@@ -11,7 +11,7 @@ Simple and easy way to populate Markdowns automatically, like README.md file. Ha
 
 # 🏗️Project still in very early dev state!
 
-## **You shouldn't use this right now. I may or not already be using this in some personal projects, but it isn't publicly ready yet. Also, this README is more like a draft right now -- not everything here is already implementeded or even won't ever be.**
+## **You shouldn't use this right now. I may or not already be using this in some personal projects, but it isn't publicly ready yet. Also, this README is more like a draft right now -- not everything here is already implementeded or even will ever be.**
 
 <br/>
 
@@ -37,11 +37,11 @@ Simple and easy way to populate Markdowns automatically, like README.md file. Ha
 
 ## Usage
 ```md
-<!--$yourProp-->
-<!--/$yourProp-->
+<!--$ yourProp -->
+<!--/$ yourProp -->
 ```
 
-Spaces around are allowed: `<!--$ yourProp -->`
+No-spaces around are allowed: `<!--$yourProp-->`
 
 ### Prop/Segment
 #### Function
